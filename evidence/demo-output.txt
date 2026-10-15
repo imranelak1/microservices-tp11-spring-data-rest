@@ -1,0 +1,227 @@
+APPLICATION RÉELLE : banque-data-rest sur http://localhost:18011
+GET /api/comptes?page=0&size=2&sort=solde,desc [application/json] -> HTTP 200
+{
+  "_embedded" : {
+    "comptes" : [ {
+      "id" : 3,
+      "solde" : 7200.0,
+      "dateCreation" : "2024-11-01",
+      "type" : "EPARGNE",
+      "_links" : {
+        "self" : {
+          "href" : "http://localhost:18011/api/comptes/3"
+        },
+        "compte" : {
+          "href" : "http://localhost:18011/api/comptes/3{?projection}",
+          "templated" : true
+        },
+        "client" : {
+          "href" : "http://localhost:18011/api/comptes/3/client{?projection}",
+          "templated" : true
+        }
+      }
+    }, {
+      "id" : 1,
+      "solde" : 5000.0,
+      "dateCreation" : "2024-10-30",
+      "type" : "EPARGNE",
+      "_links" : {
+        "self" : {
+          "href" : "http://localhost:18011/api/comptes/1"
+        },
+        "compte" : {
+          "href" : "http://localhost:18011/api/comptes/1{?projection}",
+          "templated" : true
+        },
+        "client" : {
+          "href" : "http://localhost:18011/api/comptes/1/client{?projection}",
+          "templated" : true
+        }
+      }
+    } ]
+  },
+  "_links" : {
+    "first" : {
+      "href" : "http://loca ...
+GET /api/comptes/1?projection=solde [application/json] -> HTTP 200
+{
+  "solde" : 5000.0,
+  "_links" : {
+    "self" : {
+      "href" : "http://localhost:18011/api/comptes/1"
+    },
+    "compte" : {
+      "href" : "http://localhost:18011/api/comptes/1{?projection}",
+      "templated" : true
+    },
+    "client" : {
+      "href" : "http://localhost:18011/api/comptes/1/client{?projection}",
+      "templated" : true
+    }
+  }
+}
+GET /api/comptes/1?projection=mobile [application/json] -> HTTP 200
+{
+  "type" : "EPARGNE",
+  "solde" : 5000.0,
+  "_links" : {
+    "self" : {
+      "href" : "http://localhost:18011/api/comptes/1"
+    },
+    "compte" : {
+      "href" : "http://localhost:18011/api/comptes/1{?projection}",
+      "templated" : true
+    },
+    "client" : {
+      "href" : "http://localhost:18011/api/comptes/1/client{?projection}",
+      "templated" : true
+    }
+  }
+}
+GET /api/comptes/search/byType?t=EPARGNE [application/json] -> HTTP 200
+{
+  "_embedded" : {
+    "comptes" : [ {
+      "id" : 1,
+      "solde" : 5000.0,
+      "dateCreation" : "2024-10-30",
+      "type" : "EPARGNE",
+      "_links" : {
+        "self" : {
+          "href" : "http://localhost:18011/api/comptes/1"
+        },
+        "compte" : {
+          "href" : "http://localhost:18011/api/comptes/1{?projection}",
+          "templated" : true
+        },
+        "client" : {
+          "href" : "http://localhost:18011/api/comptes/1/client{?projection}",
+          "templated" : true
+        }
+      }
+    }, {
+      "id" : 3,
+      "solde" : 7200.0,
+      "dateCreation" : "2024-11-01",
+      "type" : "EPARGNE",
+      "_links" : {
+        "self" : {
+          "href" : "http://localhost:18011/api/comptes/3"
+        },
+        "compte" : {
+          "href" : "http://localhost:18011/api/comptes/3{?projection}",
+          "templated" : true
+        },
+        "client" : {
+          "href" : "http://localhost:18011/api/comptes/3/client{?projection}",
+          "templated" : true
+        }
+      }
+    } ]
+  },
+  "_links" : {
+    "self" : {
+      "href" : "http://local ...
+GET /api/clients/1/comptes [application/json] -> HTTP 200
+{
+  "_embedded" : {
+    "comptes" : [ {
+      "id" : 1,
+      "solde" : 5000.0,
+      "dateCreation" : "2024-10-30",
+      "type" : "EPARGNE",
+      "_links" : {
+        "self" : {
+          "href" : "http://localhost:18011/api/comptes/1"
+        },
+        "compte" : {
+          "href" : "http://localhost:18011/api/comptes/1{?projection}",
+          "templated" : true
+        },
+        "client" : {
+          "href" : "http://localhost:18011/api/comptes/1/client{?projection}",
+          "templated" : true
+        }
+      }
+    }, {
+      "id" : 2,
+      "solde" : 2500.0,
+      "dateCreation" : "2024-10-31",
+      "type" : "COURANT",
+      "_links" : {
+        "self" : {
+          "href" : "http://localhost:18011/api/comptes/2"
+        },
+        "compte" : {
+          "href" : "http://localhost:18011/api/comptes/2{?projection}",
+          "templated" : true
+        },
+        "client" : {
+          "href" : "http://localhost:18011/api/comptes/2/client{?projection}",
+          "templated" : true
+        }
+      }
+    } ]
+  },
+  "_links" : {
+    "self" : {
+      "href" : "http://local ...
+GET /api/comptes/1/client?projection=clientDetails [application/json] -> HTTP 200
+{
+  "nom" : "Amal",
+  "email" : "amal@example.com",
+  "_links" : {
+    "self" : {
+      "href" : "http://localhost:18011/api/clients/1"
+    },
+    "client" : {
+      "href" : "http://localhost:18011/api/clients/1{?projection}",
+      "templated" : true
+    },
+    "comptes" : {
+      "href" : "http://localhost:18011/api/clients/1/comptes{?projection}",
+      "templated" : true
+    }
+  }
+}
+POST /api/comptes [application/json] -> HTTP 201
+{
+  "id" : 4,
+  "solde" : 1600.0,
+  "dateCreation" : "2024-11-01",
+  "type" : "COURANT",
+  "_links" : {
+    "self" : {
+      "href" : "http://localhost:18011/api/comptes/4"
+    },
+    "compte" : {
+      "href" : "http://localhost:18011/api/comptes/4{?projection}",
+      "templated" : true
+    },
+    "client" : {
+      "href" : "http://localhost:18011/api/comptes/4/client{?projection}",
+      "templated" : true
+    }
+  }
+}
+DELETE /api/comptes/4 [application/json] -> HTTP 200
+{
+  "id" : 4,
+  "solde" : 1600.0,
+  "dateCreation" : "2024-11-01",
+  "type" : "COURANT",
+  "_links" : {
+    "self" : {
+      "href" : "http://localhost:18011/api/comptes/4"
+    },
+    "compte" : {
+      "href" : "http://localhost:18011/api/comptes/4{?projection}",
+      "templated" : true
+    },
+    "client" : {
+      "href" : "http://localhost:18011/api/comptes/4/client{?projection}",
+      "templated" : true
+    }
+  }
+}
+VÉRIFICATIONS HTTP RÉUSSIES
